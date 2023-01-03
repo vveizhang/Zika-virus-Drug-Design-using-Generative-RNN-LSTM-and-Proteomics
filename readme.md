@@ -9,12 +9,12 @@
 - [Predicting Bitcoin price with Reddit Sentiment](#predicting-bitcoin-price-with-reddit-sentiment)
   - [Table of Contents](#table-of-contents)
   - [1. Introduction](#1-introduction)
-    - [1.1 Bitcoin](#11-bitcoin)
-    - [1.2 Sentiment Analysis](#12-sentiment-analysis)
-  - [1.3 Bert](#13-bert)
-  - [2. Dataset](#2-dataset)
-  - [3. Bert Sentiment Analysis API Demo](#3-bert-sentiment-analysis-api-demo)
-  - [4. Training and deployment of Bert](#4-training-and-deployment-of-bert)
+    - [1.1 Zika Virus](#11-zika-virus)
+    - [1.2 Proteomics](#12-proteomics)
+  - [1.3 Deep Learning in Drug Discovery](#13-deep-learning-in-drug-discovery)
+  - [2. Pipeline](#2-pipeline)
+  - [3. Differentially expressed proteins](#3-differentially-expressed-proteins)
+  - [4. Training and generation phase of LSTM](#4-training-and-generation-phase-of-lstm)
     - [4.1. Create an Amazon SageMaker notebook instance](#41-create-an-amazon-sagemaker-notebook-instance)
     - [4.2. Training and deployment](#42-training-and-deployment)
       - [4.2.1 Load the pre-trained Bert model and tokenizer](#421-load-the-pre-trained-bert-model-and-tokenizer)
@@ -39,88 +39,86 @@ Empolyed python, Bert, AWS EC2, docker, lambda, crontab and Event bridge, I buil
 
 ## 1. Introduction
 
-### 1.1 Bitcoin
+### 1.1 Zika Virus
 
-Bitcoin is a digital currency which operates free of any central control or the oversight of banks or governments.It has a distributed network system, where people can control their funds in a transparent way. It is the leading cryptocurrency and has the highest market capitalization among digital currencies. Unlike repeating phenomena like weather, cryptocurrency values do not follow a repeating pattern and mere past value of Bitcoin does not reveal any secret of future Bitcoin value. 
-
-<p align="center">
-<img src="/imgs/Bitcoin.jpeg">
-<br>
-<em>Bitcoin</em></p>
-
-The Transformer architecture follows an encoder-decoder structure, but does not rely on recurrence and convolutions in order to generate an output. In a nutshell, the task of the encoder, on the left half of the Transformer architecture, is to map an input sequence to a sequence of continuous representations, which is then fed into a decoder. 
-
-The decoder, on the right half of the architecture, receives the output of the encoder together with the decoder output at the previous time step, to generate an output sequence.
-
-### 1.2 Sentiment Analysis
-
-Humans follow general sentiments and technical analysis to invest in the market. Hence Sentiment is an important factor, considering people’s sentiment can improve the prediction of bitcoin price.
-
-## 1.3 Bert
-
-BERT is the first deeply bidirectional, unsupervised language representation, pre-trained using only a plain text corpus. Pre-trained representations can either be context-free or contextual, and contextual representations can further be unidirectional or bidirectional. Context-free models such as word2vec or GloVe generate a single word embedding representation for each word in the vocabulary. BERT represents “bank” using both its previous and next context starting from the very bottom of a deep neural network, making it deeply bidirectional.
+Zika virus was first reported in the Zika Forest of Uganda in 1947 among nonhuman primates. Zika virus (ZIKV) and dengue virus (DENV) are closely related flaviviruses that are transmitted by Aedis aegypti, the mosquito vector, and with overlapping geographical distributions. While most ZIKV infections are asymptomatic, they cause a similar immune response and symptoms including fever and body pain. The most well known symptoms of ZIKV infection is in pregnant women, which pose a significant risk to the developing embryo, with microcephaly and other adverse outcomes.
 
 <p align="center">
-<img src="/imgs/Bert.png">
+<img src="/imgs/Structure-of-Zika-Virus.jpeg">
 <br>
-<em>Bert</em></p>
+<em>Zika Virus</em></p>
 
-## 2. Dataset
+
+
+### 1.2 Proteomics
+
+Proteomics is the large-scale study of proteomes. A proteome is a set of proteins produced in an organism, system, or biological context. Proteomics enables the identification of ever-increasing numbers of proteins. This varies with time and distinct requirements, or stresses, that a cell or organism undergoes.
+
+## 1.3 Deep Learning in Drug Discovery
+
+Drug discovery and development pipelines are long, complex and depend on numerous factors. Machine learning (ML) approaches provide a set of tools that can improve discovery and decision making for well-specified questions with abundant, high-quality data. Opportunities to apply ML occur in all stages of drug discovery. Examples include target validation, identification of prognostic biomarkers and analysis of digital pathology data in clinical trials. 
+
+<p align="center">
+<img src="/imgs/lstm_chem.jpg">
+<br>
+<em>LSTM-based drug generation</em></p>
+
+## 2. Pipeline
 
 I will use PushshiftAPI from psaw package to scrape comments regarding bitcoin from reddit.
 
-```python
-from psaw import PushshiftAPI 
-api = PushshiftAPI()
-start_date = start_date
-end_date = end_date
-data = data_prep_comments("bitcoin", start_time=int(dt.datetime(start_date).timestamp()), end_time=  int(dt.datetime(end_date).timestamp()),filters = [], limit = 2000000)
-```
+
 Here shows how the scraped comment data looks like:
 <p align="center">
-<img src="/imgs/Reddit_Comments.png">
+<img src="/imgs/PipeLine.png">
 <br>
-<em>scraped reddit comment data</em></p>
+<em>Pipe Line</em></p>
 
-## 3. Bert Sentiment Analysis API Demo
+## 3. Differentially expressed proteins
 
 I built an [Online bitcoin comments sentiment analyzer](http://18.118.15.97:8501/) using [Streamlit](https://streamlit.io/) running the trained model. You can input any comments about Bitcoin, the API will do the sentiment analysis for you.
 
 <p align="center">
-<img src="/imgs/BertAPI.png">
+<img src="/imgs/Fig1.png">
 <br>
-<em>Image by Author</em></p>
+<em>Differentially expressed Proteins</em></p>
 
 
-## 4. Training and deployment of Bert
+## 4. Training and generation phase of LSTM
 
 ### 4.1. Create an Amazon SageMaker notebook instance
 
-Follow this [hands-on tutorial](https://aws.amazon.com/getting-started/hands-on/build-train-deploy-machine-learning-model-sagemaker/) from AWS to create an Amazon SageMaker notebook instance. Use "*transformer*" as the **instance name**, and "*ml.t3.medium*" as the **instance type**.
+Drugs datasets used in this project are from two database: Moses and ChEMBL. Together these two data sets represent about 2.5 million smiles.
 
-You can also check the finished [Sagemaker notebook](https://github.com/vveizhang/Bitcoin_Social_Media_Sentiment_Analysis/blob/main/src/pyTorchInference.ipynb) here:
+The preprocess steps includes removing duplicates, salts, stereochemical information, nucleic acids and long peptides.
 
 ### 4.2. Training and deployment
 #### 4.2.1 Load the pre-trained Bert model and tokenizer
 
 ```python
-class SentimentClassifier(nn.Module):
-    def __init__(self, n_classes):
-        super(SentimentClassifier, self).__init__()
-        self.bert = BertModel.from_pretrained("bert-base-cased")
-        self.drop = nn.Dropout(p=0.3)
-        self.out = nn.Linear(self.bert.config.hidden_size, n_classes)
-    def forward(self, input_ids, attention_mask):
-        returned = self.bert(
-        input_ids=input_ids,
-        attention_mask=attention_mask)
-        pooled_output = returned["pooler_output"]
-        output = self.drop(pooled_output)
-        return self.out(output)
+def main():
+    config = process_config(CONFIG_FILE)
 
-PRE_TRAINED_MODEL_NAME = 'bert-base-cased'
-tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME)
-data_loader = create_data_loader(df, tokenizer, BATCH_SIZE, max_len=300)
+    # create the experiments dirs
+    create_dirs(
+        [config.exp_dir, config.tensorboard_log_dir, config.checkpoint_dir])
+
+    #Create the data generator.
+    train_dl = DataLoader(config, data_type='train')
+    valid_dl = copy(train_dl)
+    valid_dl.data_type = 'valid'
+
+    #Create the model.
+    modeler = LSTMChem(config, session='train')
+
+    #Create the trainer.
+    trainer = LSTMChemTrainer(modeler, train_dl, valid_dl)
+
+    #Start training the model.
+    trainer.train()
+ 
+if __name__ == '__main__':
+    main()
 ```
 #### 4.2.2 Model Hyperparameters Tuning using wandb sweep
 Run [Sagemaker notebook](https://github.com/vveizhang/Bitcoin_Social_Media_Sentiment_Analysis/blob/main/src/pyTorchInference.ipynb) on SageMaker to train and deploy the transformer model. Read through it to get more details on the implementation.
