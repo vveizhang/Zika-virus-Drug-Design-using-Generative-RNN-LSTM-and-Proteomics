@@ -12,6 +12,7 @@
     - [1.1 Zika Virus](#11-zika-virus)
     - [1.2 Proteomics](#12-proteomics)
   - [1.3 Deep Learning in Drug Discovery](#13-deep-learning-in-drug-discovery)
+  - [1.4 SMILES](#14-smiles)
   - [2. Pipeline](#2-pipeline)
   - [3. Differentially expressed proteins](#3-differentially-expressed-proteins)
   - [4. Training and generation phase of LSTM](#4-training-and-generation-phase-of-lstm)
@@ -51,6 +52,14 @@ Drug discovery and development pipelines are long, complex and depend on numerou
 <img src="/imgs/lstm_chem.jpg">
 <br>
 <em>LSTM-based drug generation</em></p>
+
+## 1.4 SMILES
+SMILES: Simplified molecular-input line-entry system, is a specification in the form of a line notation for describing the structure of chemical species using short ASCII strings. SMILES strings can be imported by most molecule editors for conversion back into two-dimensional drawings or three-dimensional models of the molecules.
+
+<p align="center">
+<img src="/imgs/SMILES.png">
+<br>
+<em>SMILES from wikipedia</em></p>
 
 ## 2. Pipeline
 
