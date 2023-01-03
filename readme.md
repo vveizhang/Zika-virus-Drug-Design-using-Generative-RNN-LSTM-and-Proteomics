@@ -121,7 +121,6 @@ CC(C)OC(=O)C(C)NP(=O)(OCC1C(C(C(O1)N2C=CC(=O)NC2=O)(C)F)O)OC3=CC=CC=C3
 
 Add them into the dataset for fine-tune.
 ```python
-config = process_config('experiments/base_experiment/LSTM_Chem/config.json')
 
 modeler = LSTMChem(config, session='finetune')
 finetune_dl = DataLoader(config, data_type='finetune')
