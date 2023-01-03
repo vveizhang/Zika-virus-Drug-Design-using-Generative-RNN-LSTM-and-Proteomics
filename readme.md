@@ -25,8 +25,6 @@
   - [5. References](#5-references)
   - [Contact](#contact)
 
-Empolyed python, Bert, AWS EC2, docker, lambda, crontab and Event bridge, I build a prediction system that will automatically download reddit comments about bitcoin, sentimental analysis of the comments, then use these sentiment data to predict bitcoin price, and update the result daily to a dashboard here: [dashboard](http://18.224.251.221:8080/)
-
 ## 1. Introduction
 
 ### 1.1 Zika Virus
@@ -63,10 +61,8 @@ SMILES: Simplified molecular-input line-entry system, is a specification in the 
 
 ## 2. Pipeline
 
-I will use PushshiftAPI from psaw package to scrape comments regarding bitcoin from reddit.
+The whole pipeline of this project looks like this:
 
-
-Here shows how the scraped comment data looks like:
 <p align="center">
 <img src="/imgs/PipeLine.png">
 <br>
@@ -74,7 +70,7 @@ Here shows how the scraped comment data looks like:
 
 ## 3. Differentially expressed proteins
 
-I built an [Online bitcoin comments sentiment analyzer](http://18.118.15.97:8501/) using [Streamlit](https://streamlit.io/) running the trained model. You can input any comments about Bitcoin, the API will do the sentiment analysis for you.
+Proteomic analysis of plasma from healthy and ZIKV infected human identified proteins that significantly changed in expression level.
 
 <p align="center">
 <img src="/imgs/Fig1.png">
@@ -119,8 +115,7 @@ if __name__ == '__main__':
     main()
 ```
 #### 4.2.2 Model Fine-Tuning using validated durgs
-Search the literatures and got experiment validated anti-ZIKV drugs:
-Such as:
+Search the literatures and got experiment validated anti-ZIKV drugs, such as:
 
 Niclosamide	
 OC1=C(C=C(Cl)C=C1)C(=O)NC1=C(Cl)C=C(C=C1)[N+]([O-])=O
