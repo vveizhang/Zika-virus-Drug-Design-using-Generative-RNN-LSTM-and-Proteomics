@@ -168,7 +168,7 @@ output_pdbqt = v.poses(n_poses=5)
 - **Zika Virus**: [https://www.who.int/news-room/fact-sheets/detail/zika-virus](https://www.who.int/news-room/fact-sheets/detail/zika-virus)
 - **Introduction of LSTM**: [Understanding LSTM -- a tutorial into Long Short-Term Memory Recurrent Neural Networks](https://arxiv.org/abs/1909.09586)
 
-- **Introduction of LSTM_chem**: [[BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://github.com/topazape/LSTM_Chem)]
+- **Introduction of LSTM_chem**: [[Generative Recurrent Networks for De Novo Drug Design](https://github.com/topazape/LSTM_Chem)]
 
 - **AutoDock**: [https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/autodock](https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/autodock)
 - **RDKit**: [https://www.rdkit.org/docs/GettingStartedInPython.html](https://www.rdkit.org/docs/GettingStartedInPython.html)
