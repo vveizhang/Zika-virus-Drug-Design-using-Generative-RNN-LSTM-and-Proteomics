@@ -132,7 +132,7 @@ finetune_dl = DataLoader(config, data_type='finetune')
 finetuner = LSTMChemFinetuner(modeler, finetune_dl)
 finetuner.finetune()
 ```
-The wandb will generate a parallel coordinates plot, a parameter importance plot, and a scatter plot when you start a W&B Sweep job. 
+
 
 
 #### 4.2.3 Binding analysis of potential drugs using AutoDock
